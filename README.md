@@ -25,7 +25,13 @@ See `requirements.txt` (pinned versions include streamlit, pandas, numpy, yfinan
 pip install -r requirements.txt
 ```
 
-3. Obtain a [NewsAPI](https://newsapi.org/) key. The app currently passes an API key into `MarketNewsAggregator` in `stockdashboard.py`; move that key into Streamlit secrets or an environment variable before sharing or deploying.
+3. Obtain a [NewsAPI](https://newsapi.org/) key and set it as the `NEWS_API_KEY` environment variable. The app reads that variable at startup and stops with an error if it is missing.
+
+```bash
+export NEWS_API_KEY=your_newsapi_key_here
+```
+
+You can copy `.env.example` to `.env`, put the key on the `NEWS_API_KEY=` line, and load it before launch (`set -a && source .env && set +a`). `.env` is gitignored — do not commit it.
 
 ## Usage
 
